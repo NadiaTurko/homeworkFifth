@@ -80,28 +80,33 @@
 // В. Реалізувати клас, що описує маркер, що заправляється, успадкувавши його від простого маркера і додавши метод для заправки маркера.
 // Продемонструвати роботу написаних методів
 
-// class Market {
-//   constructor(nameColor, color, amountOfInk) {
-//     this.nameColor = nameColor;
-//     this.color = color;
-//     this.amountOfInk = amountOfInk;
-//   }
-//   methodPrint(string) {
-//     if (this.amountOfInk > 0 && this.amountOfInk <= 100) {
-//       return this.color + string;
-//     } else {
-//       return `Marker ${this.nameColor} is empty`;
-//     }
-//   }
-// }
-// const red = new Market("red", "\x1b[31m", 80);
-// const black = new Market("black", "\x1b[30m", 20);
-// const white = new Market("white", "\x1b[37m", 40);
-// const green = new Market("green", "\x1b[32m", 70);
-// const yellow = new Market("yellow", "\x1b[33m", 0);
-// const blue = new Market("blue", "\x1b[34m", 65);
+class Market {
+  constructor(nameColor, color, amountOfInk) {
+    this.nameColor = nameColor;
+    this.color = color;
+    this.amountOfInk = amountOfInk;
+  }
+  methodPrint(string) {
+    if (this.amountOfInk <= 0) {
+      return `Marker ${this.nameColor} is empty`;
+    }
+    const outputText = string.split(" ");
+    [...outputText].map((element) => {
+      if (element !== " ") {
+        return (this.amountOfInk -= 0.5);
+      }
+    });
+    return `${this.color}  ${string},  ${this.amountOfInk} `;
+  }
+}
+const red = new Market("red", "\x1b[31m", 1);
+const black = new Market("black", "\x1b[30m", 20);
+const white = new Market("white", "\x1b[37m", 40);
+const green = new Market("green", "\x1b[32m", 70);
+const yellow = new Market("yellow", "\x1b[33m", 0);
+const blue = new Market("blue", "\x1b[34m", 65);
 
-// console.log(red.methodPrint("fkgjofjx flkgf kgerp gpke"));
+console.log(red.methodPrint("Hello world!!! Hello world!!!"));
 // 5.
 // Створіть клас Worker який буде мати конструктор, який приймає наступні властивості: fullName (імʼя і прізвище),
 // dayRate (ставка за день роботи), workingDays (кількість відпрацьованих днів).
