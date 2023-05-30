@@ -1,111 +1,10 @@
-// ООП - обєктно орієнтовне програмування
-
-//
-
-// class User {
-//     constructor(name, age){
-//         this.name = name;
-//         this.age = age
-//     }
-
-//     showName(){
-//         console.log(this.name);
-//     }
-// }
-
-// const user1 = new User("Ivan", 3000);
-// const user2 = new User("Petro", 1000);
-
-// console.log(user1.showName());
-// console.log(user2.showName());
-// user2.showName();
-
-// class User {
-//     constructor(name, age){
-//         this.name = name;
-//         this.age = age
-//     }
-
-//     static PI = 3.14;
-
-//     // static showName(){
-//     //     console.log(this.name);
-//     // }
-
-//     // calculation(){
-//     //     console.log(2 + PI);
-//     // }
-// }
-
-// const user1 = new User("Ivan", 3000);
-
-// console.log(user1.PI);
-// console.log(User.PI);
-
-// Наслідування, Інкапсуляція, Поліморфізм
-
-// Наслідування
-
-// class People {
-//     constructor(name, age){
-//         this._name = name;
-//         this.age = age;
-//     }
-
-//     // value = 23; public data
-//     #value = 23;
-//     get name(){
-//         return this._name;
-//     }
-
-//     set name(value){
-//         if(typeof value === 'string'){
-//             this._name = value;
-//         }
-
-//     }
-//     set value(newValue){
-//         this.#value = newValue;
-//     }
-
-//     talk(){
-//         console.log("i can talk like People");
-//     }
-// }
-
-// class Student extends People {
-//     constructor(name, course){
-//         super(name);
-//         this.course = course;
-//     }
-
-//     talk(){
-//         super.talk();
-//         console.log("i can talk like Student");
-//     }
-
-//     lerning(){
-//         console.log("lerning");
-//     }
-// }
-
-// const student1 = new Student("Vasyl","js");
-// console.log(student1);
-// const people1 = new People("Ivan", 40);
-// people1.name = "Vasyl";
-// people1.name;
-// console.log(people1.value);
-// console.log(student1.lerning());
-// student1.talk();
-// student1.name = "Vasyl";
-// getter setter
 // 5. OBJECT ORIENTED PROGRAMMING (OOP) INTRO. OBJECTS. CLASSES (parti)
 
 // 1.Напишіть клас Круг та реалізуйте функціонал:
 // - Визначте конструктор, який запитує координати центру кола, його радіус та ініціалізує обʼєкт;
 // - визначте метод отримания
 // довжини кола для поточного обʼєкта (L = 2 * л * R.
-// - Визначте статичний метол
+// - Визначте статичний метод
 // який приймає радіус та повертає довжину кола для заданого радіусу:
 // - Визначте метод отримання обʼєкта-кола, який повертає копію поточного обєкта:
 // - Визначте статичнии метод, якии примає координати центра кола, иого радіус та повертає об єкт кола із заданими
@@ -180,6 +79,29 @@
 // текст виводиться до тих пір, поки в маркері є чорнило; один не пробіловий символ - це 0,5% чорнила в маркері).
 // В. Реалізувати клас, що описує маркер, що заправляється, успадкувавши його від простого маркера і додавши метод для заправки маркера.
 // Продемонструвати роботу написаних методів
+
+// class Market {
+//   constructor(nameColor, color, amountOfInk) {
+//     this.nameColor = nameColor;
+//     this.color = color;
+//     this.amountOfInk = amountOfInk;
+//   }
+//   methodPrint(string) {
+//     if (this.amountOfInk > 0 && this.amountOfInk <= 100) {
+//       return this.color + string;
+//     } else {
+//       return `Marker ${this.nameColor} is empty`;
+//     }
+//   }
+// }
+// const red = new Market("red", "\x1b[31m", 80);
+// const black = new Market("black", "\x1b[30m", 20);
+// const white = new Market("white", "\x1b[37m", 40);
+// const green = new Market("green", "\x1b[32m", 70);
+// const yellow = new Market("yellow", "\x1b[33m", 0);
+// const blue = new Market("blue", "\x1b[34m", 65);
+
+// console.log(red.methodPrint("fkgjofjx flkgf kgerp gpke"));
 // 5.
 // Створіть клас Worker який буде мати конструктор, який приймає наступні властивості: fullName (імʼя і прізвище),
 // dayRate (ставка за день роботи), workingDays (кількість відпрацьованих днів).
@@ -201,22 +123,11 @@ class Worker {
     this.workingDays = workingDays;
   }
 
-  static showSalary() {
+  showSalary() {
     const salary = this.dayRate * this.workingDays;
     return salary;
   }
 
-  // static showSortSalary() {
-  //   const forEach = [];
-  //   forEach = this.fullName.forEach((value) => {
-  //     value + this.fullName;
-  //   });
-  //   return forEach;
-  // }
-
-  static compare(articleA, articleB) {
-    return articleA.showSalary - articleB.showSalary;
-  }
   #experience = 1.2;
   showSalaryWithExperience() {
     const salaryWithExperience = this.showSalary() * this.#experience;
@@ -237,49 +148,23 @@ class Worker {
     this.setExp = 1.5;
     console.log("New experience 1.5: " + this.showSalaryWithExperience());
   }
+
+  static methodSort(array) {
+    const resultSort = [...array].sort(
+      (a, b) => a.showSalary() - b.showSalary()
+    );
+    return resultSort.forEach((item) => {
+      console.log(`${item.fullName}: ${item.showSalary()}`);
+    });
+  }
 }
 
 const worker1 = new Worker("John Johnson", 20, 23);
 const worker2 = new Worker("Tom Tomson", 48, 22);
 const worker3 = new Worker("Andy Ander", 29, 22);
-const workerAll = [worker1, worker2, worker3];
-// worker1.viewSalary();
-
-// worker2.viewSalary();
-// worker3.viewSalary();
-
-console.log(workerAll.sort(Worker.compare));
-// console.log(worker1.fullName);
-// console.log(`${worker1.fullName} salary:` + worker1.showSalary());
-// console.log("New experience: " + worker1.showSalaryWithExperience());
-// worker1.setExp = 1.5;
-// console.log("New experience: " + worker1.showSalaryWithExperience());
-// console.log(worker2.fullName);
-// console.log(`${worker2.fullName} salary:` + worker2.showSalary());
-// console.log("New experience: " + worker2.showSalaryWithExperience());
-// worker2.setExp = 1.5;
-// console.log("New experience: " + worker2.showSalaryWithExperience());
-// console.log(worker3.fullName);
-// console.log(`${worker3.fullName} salary:` + worker3.showSalary());
-// console.log("New experience: " + worker3.showSalaryWithExperience());
-// worker3.setExp = 1.5;
-// console.log("New experience: " + worker3.showSalaryWithExperience());
-// Output example:
-// John Johnson
-// John Johnson salary: 460
-// New experience: 1.2
-// John Johnson salary: 552
-// New experience: 1.5
-// John Johnson salary: 690
-// Tom Tomson
-// Tom Tomson salary: 1056
-// New experience: 1.5
-// Tom Tomson salary: 1584
-// Andy Ander
-// Andy Ander salary: 667
-// New experience: 1.5
-// Andy Ander salary: 1000.5
-// Sorted salary:
-// John Johnson: 690
-// Andy Ander: 1000.5
-// Tom Tomson: 1584
+const allWorker = [worker1, worker2, worker3];
+worker1.viewSalary();
+worker2.viewSalary();
+worker3.viewSalary();
+console.log(Worker.methodSort(allWorker));
+console.log(allWorker);
