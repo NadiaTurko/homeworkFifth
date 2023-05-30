@@ -93,7 +93,10 @@ class Market {
     const outputText = string.split(" ");
     [...outputText].map((element) => {
       if (element !== " ") {
-        return (this.amountOfInk -= 0.5);
+        if (this.amountOfInk <= 0) {
+          return `Marker ${this.nameColor} is empty`;
+        }
+        this.amountOfInk -= 0.5;
       }
     });
     return `${this.color}  ${string},  ${this.amountOfInk} `;
@@ -106,7 +109,7 @@ const green = new Market("green", "\x1b[32m", 70);
 const yellow = new Market("yellow", "\x1b[33m", 0);
 const blue = new Market("blue", "\x1b[34m", 65);
 
-console.log(red.methodPrint("Hello world!!! Hello world!!!"));
+console.log(red.methodPrint("Hello world!! Hello world!!!"));
 // 5.
 // Створіть клас Worker який буде мати конструктор, який приймає наступні властивості: fullName (імʼя і прізвище),
 // dayRate (ставка за день роботи), workingDays (кількість відпрацьованих днів).
