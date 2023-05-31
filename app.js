@@ -80,6 +80,7 @@
 // В. Реалізувати клас, що описує маркер, що заправляється, успадкувавши його від простого маркера і додавши метод для заправки маркера.
 // Продемонструвати роботу написаних методів
 
+
 class Market {
   constructor(nameColor, color, amountOfInk) {
     this.nameColor = nameColor;
@@ -90,16 +91,16 @@ class Market {
     if (this.amountOfInk <= 0) {
       return `Marker ${this.nameColor} is empty`;
     }
+
+    const resultString = [];
     const outputText = string.split(" ");
     [...outputText].map((element) => {
-      if (element !== " ") {
-        if (this.amountOfInk <= 0) {
-          return `Marker ${this.nameColor} is empty`;
-        }
+      if (this.amountOfInk > 0 && element !== " ") {
         this.amountOfInk -= 0.5;
+        return resultString.push(element);
       }
     });
-    return `${this.color}  ${string},  ${this.amountOfInk} `;
+    return `${this.color}` + resultString.join(" ");
   }
 }
 const red = new Market("red", "\x1b[31m", 1);
