@@ -86,19 +86,22 @@ class Market {
     this.amountOfInk = amountOfInk;
   }
   methodPrint(string) {
-    if (this.amountOfInk <= 0) {
+    if (this.amountOfInk === 0) {
       return `Marker ${this.nameColor} is empty`;
     }
-
     const resultString = [];
-    const outputText = string.split(" ");
-    [...outputText].map((element) => {
-      if (this.amountOfInk > 0 && element !== " ") {
+    const outputText = string.split("");
+    outputText.forEach((element) => {
+      if (element == " ") {
+        return resultString.push(element);
+      } else if (this.amountOfInk > 0 && element !== " ") {
         this.amountOfInk -= 0.5;
         return resultString.push(element);
       }
     });
-    return `${this.color}` + resultString.join(" ");
+
+    console.log(resultString);
+    return `${this.color}` + resultString.join("");
   }
 }
 const red = new Market("red", "\x1b[31m", 1);
