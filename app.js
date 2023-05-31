@@ -11,7 +11,33 @@
 // параметрами:
 // - Визначте метод перевірки попадання крапки до кола;
 // - Визначте метод перетворення поточного стану обʼєкта на символьний рядок (tostring()).
-
+class Circle {
+  constructor(x, y, radius) {
+    this.x = x;
+    this.y = y;
+    this.radius = radius;
+  }
+  methodLengthCircle() {
+    return 2 * this.radius * Math.PI;
+  }
+  static lengthCircle(r) {
+    return 2 * r * Math.PI;
+  }
+  pointInCircle(x, y) {
+    return (x - this.x) ** 2 + (y - this.y) ** 2 <= this.radius ** 2
+      ? true
+      : false;
+  }
+  toString() {
+    return (Circle.prototype.toString = `Circle coordinatec x:${this.x}, y:${this.y}, R:${this.radius} `);
+  }
+}
+const circleFirst = new Circle(5, 8, 10);
+console.log(circleFirst.pointInCircle(1, 1));
+// const copyCircleFirst = Object.assign({}, circleFirst);
+const copyCircleFirst = { ...circleFirst };
+console.log(copyCircleFirst);
+console.log(circleFirst.toString());
 // 2.
 // Напишіть функцію propsCount (currentObject) , яка приймає обʼєкт і
 //визначає кількість властивостей цього обʼєкта.
