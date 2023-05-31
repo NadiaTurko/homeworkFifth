@@ -86,13 +86,10 @@ class Market {
     this.amountOfInk = amountOfInk;
   }
   methodPrint(string) {
-    if (this.amountOfInk === 0) {
-      return `Marker ${this.nameColor} is empty`;
-    }
     const resultString = [];
     const outputText = string.split("");
     outputText.forEach((element) => {
-      if (element == " ") {
+      if (element === " ") {
         return resultString.push(element);
       } else if (this.amountOfInk > 0 && element !== " ") {
         this.amountOfInk -= 0.5;
@@ -100,11 +97,10 @@ class Market {
       }
     });
 
-    console.log(resultString);
     return `${this.color}` + resultString.join("");
   }
 }
-const red = new Market("red", "\x1b[31m", 1);
+const red = new Market("red", "\x1b[31m", 21);
 const black = new Market("black", "\x1b[30m", 20);
 const white = new Market("white", "\x1b[37m", 40);
 const green = new Market("green", "\x1b[32m", 70);
