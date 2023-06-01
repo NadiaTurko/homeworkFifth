@@ -27,19 +27,22 @@ class Circle {
       ? true
       : false;
   }
+  circleObject(x, y, r) {
+    const circleObject = { x: this.x, y: this.y, r: this.radius };
+    return circleObject;
+  }
   toString() {
-    return JSON.stringify(Circle);
-    // return (Circle.prototype.toString = `Circle coordinatec x:${this.x}, y:${this.y}, R:${this.radius} `);
+    return JSON.stringify(this.circleObject());
   }
 }
-const circleFirst = new Circle(5, "a", 10);
-const circleFirstString = JSON.stringify(circleFirst);
+const circleFirst = new Circle(5, 2, 10);
+const circleFirstString = circleFirst.toString();
+console.log(circleFirstString);
 console.log(circleFirst.pointInCircle(1, 1));
 // const copyCircleFirst = Object.assign({}, circleFirst);
 const copyCircleFirst = { ...circleFirst };
 console.log(circleFirst);
 console.log(copyCircleFirst);
-console.log(circleFirstString);
 // // 2.
 // // Напишіть функцію propsCount (currentObject) , яка приймає обʼєкт і
 // //визначає кількість властивостей цього обʼєкта.
