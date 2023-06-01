@@ -27,12 +27,12 @@ class Circle {
       ? true
       : false;
   }
-  circleObject(x, y, r) {
+  static circleObject(x, y, r) {
     const circleObject = { x: this.x, y: this.y, r: this.radius };
     return circleObject;
   }
   toString() {
-    return JSON.stringify(this.circleObject());
+    return JSON.stringify(this);
   }
 }
 const circleFirst = new Circle(5, 2, 10);
@@ -43,6 +43,7 @@ console.log(circleFirst.pointInCircle(1, 1));
 const copyCircleFirst = { ...circleFirst };
 console.log(circleFirst);
 console.log(copyCircleFirst);
+
 // // 2.
 // // Напишіть функцію propsCount (currentObject) , яка приймає обʼєкт і
 // //визначає кількість властивостей цього обʼєкта.
