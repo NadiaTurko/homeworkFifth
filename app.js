@@ -27,10 +27,7 @@ class Circle {
       ? true
       : false;
   }
-  static circleObject(x, y, r) {
-    const circleObject = { x: this.x, y: this.y, r: this.radius };
-    return circleObject;
-  }
+
   toString() {
     return JSON.stringify(this);
   }
@@ -49,13 +46,13 @@ console.log(copyCircleFirst);
 // //визначає кількість властивостей цього обʼєкта.
 // // Наприклад:
 
-// // let mentor = {
-// //   course: "JS fundamental",
-// //   duration: 3,
-// //   direction: "web-development",
-// // };
-// // const propsCount = (currentObject) => Object.keys(currentObject).length;
-// // console.log(propsCount(mentor)); // 3
+let mentor = {
+  course: "JS fundamental",
+  duration: 3,
+  direction: "web-development",
+};
+const propsCount = (currentObject) => Object.keys(currentObject).length;
+console.log(propsCount(mentor)); // 3
 
 // // 3.
 // // - Створіть клас Person. у якого конструктор приймає параметри name i surname. а також міститься метод
@@ -72,45 +69,45 @@ console.log(copyCircleFirst);
 // // console. log(stud1.showFul1Name("Petrovych")); // Petrenko Petro Petrovych
 // // console.log("Current course:"+stud1.showCourse()); //Current course: 4
 
-// class Person {
-//   constructor(name, surname) {
-//     this.name = name;
-//     this.surname = surname;
-//   }
-//   showFullName() {
-//     console.log(`${this.name} ${this.surname}`);
-//   }
-// }
+class Person {
+  constructor(name, surname) {
+    this.name = name;
+    this.surname = surname;
+  }
+  showFullName() {
+    console.log(`${this.name} ${this.surname}`);
+  }
+}
 
-// class Student extends Person {
-//   constructor(name, surname, year) {
-//     super(name, surname);
-//     this.year = year;
-//   }
+class Student extends Person {
+  constructor(name, surname, year) {
+    super(name, surname);
+    this.year = year;
+  }
 
-//   showFullName(midleName) {
-//     super.showFullName();
-//     console.log(`${this.name} ${this.surname} ${midleName}`);
-//   }
-//   showCourse(currentYear) {
-//     const studentCourse = currentYear - this.year;
-//     if (studentCourse > 0 && studentCourse <= 6) {
-//       return studentCourse;
-//     } else {
-//       return `The year is not entered correctly`;
-//     }
-//   }
-// }
-// const stud1 = new Student("Petro", "Petrenko", 2019);
-// console.log(stud1.showFullName("Petrovych")); // Petrenko Petro Petrovych
-// console.log("Current course:" + stud1.showCourse(2023)); //Current course: 4
-// А. Реалізувати клас, який описує простий маркер. У класі мають бути такі компоненти:
-// - поле, яке зберігає колір маркера;
-// - поле, яке зберігає кількість чорнила в маркері (у відсотках);
-// - метод друку (метод приймає рядок і виводить текст відповідним кольором;
-// текст виводиться до тих пір, поки в маркері є чорнило; один не пробіловий символ - це 0,5% чорнила в маркері).
-// В. Реалізувати клас, що описує маркер, що заправляється, успадкувавши його від простого маркера і
-// додавши метод для заправки маркера.
+  showFullName(midleName) {
+    super.showFullName();
+    console.log(`${this.name} ${this.surname} ${midleName}`);
+  }
+  showCourse(currentYear) {
+    const studentCourse = currentYear - this.year;
+    if (studentCourse > 0 && studentCourse <= 6) {
+      return studentCourse;
+    } else {
+      return `The year is not entered correctly`;
+    }
+  }
+}
+const stud1 = new Student("Petro", "Petrenko", 2019);
+console.log(stud1.showFullName("Petrovych")); // Petrenko Petro Petrovych
+console.log("Current course:" + stud1.showCourse(2023)); //Current course: 4
+А. Реалізувати клас, який описує простий маркер. У класі мають бути такі компоненти:
+- поле, яке зберігає колір маркера;
+- поле, яке зберігає кількість чорнила в маркері (у відсотках);
+- метод друку (метод приймає рядок і виводить текст відповідним кольором;
+текст виводиться до тих пір, поки в маркері є чорнило; один не пробіловий символ - це 0,5% чорнила в маркері).
+В. Реалізувати клас, що описує маркер, що заправляється, успадкувавши його від простого маркера і
+додавши метод для заправки маркера.
 // Продемонструвати роботу написаних методів
 
 class Marker {
@@ -167,90 +164,68 @@ console.log(markerRed.fillup());
 // Посортувати зарплату працівників із найбільшим experience по зростанню і вивести результат в форматі: worker_fulIName: salary_value
 // 6) Реалізувати динамічне сортування для будь-якої кількості працівників-екземплярів класу Worker .
 // Example usage:
-// class Worker {
-//   constructor(fullName, dayRate, workingDays) {
-//     this.fullName = fullName;
-//     this.dayRate = dayRate;
-//     this.workingDays = workingDays;
-//   }
+class Worker {
+  constructor(fullName, dayRate, workingDays) {
+    this.fullName = fullName;
+    this.dayRate = dayRate;
+    this.workingDays = workingDays;
+  }
 
-//   showSalary() {
-//     const salary = this.dayRate * this.workingDays;
-//     return salary;
-//   }
+  showSalary() {
+    const salary = this.dayRate * this.workingDays;
+    return salary;
+  }
 
-//   #experience = 1.2;
-//   showSalaryWithExperience() {
-//     const salaryWithExperience = this.showSalary() * this.#experience;
-//     return salaryWithExperience;
-//   }
-//   get setExp() {
-//     return this.#experience;
-//   }
+  #experience = 1.2;
+  showSalaryWithExperience() {
+    const salaryWithExperience = this.showSalary() * this.#experience;
+    return salaryWithExperience;
+  }
+  get setExp() {
+    return this.#experience;
+  }
 
-//   set setExp(value) {
-//     this.#experience = value;
-//   }
+  set setExp(value) {
+    this.#experience = value;
+  }
 
-//   viewSalary() {
-//     console.log(this.fullName);
-//     console.log(`${this.fullName} salary:` + this.showSalary());
-//     console.log("New experience 1.2: " + this.showSalaryWithExperience());
-//     this.setExp = 1.5;
-//     console.log("New experience 1.5: " + this.showSalaryWithExperience());
-//   }
+  viewSalary() {
+    console.log(this.fullName);
+    console.log(`${this.fullName} salary:` + this.showSalary());
+    console.log("New experience 1.2: " + this.showSalaryWithExperience());
+    this.setExp = 1.5;
+    console.log("New experience 1.5: " + this.showSalaryWithExperience());
+  }
 
-//   static methodSort(array) {
-//     const resultSort = [...array].sort(
-//       (a, b) => a.showSalaryWithExperience() - b.showSalaryWithExperience()
-//     );
-//     return resultSort.forEach((item) => {
-//       console.log(`${item.fullName}: ${item.showSalaryWithExperience()}`);
-//     });
-//   }
-// }
+  static methodSort(array) {
+    const resultSort = [...array].sort(
+      (a, b) => a.showSalaryWithExperience() - b.showSalaryWithExperience()
+    );
+    return resultSort.forEach((item) => {
+      console.log(`${item.fullName}: ${item.showSalaryWithExperience()}`);
+    });
+  }
+}
 
-// const worker1 = new Worker("John Johnson", 20, 23);
-// const worker2 = new Worker("Tom Tomson", 48, 22);
-// const worker3 = new Worker("Andy Ander", 29, 22);
-// const allWorker = [worker1, worker2, worker3];
-// // worker1.viewSalary();
-// // worker2.viewSalary();
-// // worker3.viewSalary();
-// console.log(Worker.methodSort(allWorker));
-// console.log(allWorker);
+const worker1 = new Worker("John Johnson", 20, 23);
+const worker2 = new Worker("Tom Tomson", 48, 22);
+const worker3 = new Worker("Andy Ander", 29, 22);
+const allWorker = [worker1, worker2, worker3];
+console.log(Worker.methodSort(allWorker));
+console.log(allWorker);
 
-// console.log(worker1.fullName);
-// console.log(`${worker1.fullName} salary:` + worker1.showSalary());
-// console.log("New experience: " + worker1.showSalaryWithExperience());
-// worker1.setExp = 1.5;
-// console.log("New experience: " + worker1.showSalaryWithExperience());
-// console.log(worker2.fullName);
-// console.log(`${worker2.fullName} salary:` + worker2.showSalary());
-// console.log("New experience: " + worker2.showSalaryWithExperience());
-// worker2.setExp = 1.5;
-// console.log("New experience: " + worker2.showSalaryWithExperience());
-// console.log(worker3.fullName);
-// console.log(`${worker3.fullName} salary:` + worker3.showSalary());
-// console.log("New experience: " + worker3.showSalaryWithExperience());
-// worker3.setExp = 1.5;
-// console.log("New experience: " + worker3.showSalaryWithExperience());
-// Output example:
-// John Johnson
-// John Johnson salary: 460
-// New experience: 1.2
-// John Johnson salary: 552
-// New experience: 1.5
-// John Johnson salary: 690
-// Tom Tomson
-// Tom Tomson salary: 1056
-// New experience: 1.5
-// Tom Tomson salary: 1584
-// Andy Ander
-// Andy Ander salary: 667
-// New experience: 1.5
-// Andy Ander salary: 1000.5
-// Sorted salary:
-// John Johnson: 690
-// Andy Ander: 1000.5
-// Tom Tomson: 1584
+console.log(worker1.fullName);
+console.log(`${worker1.fullName} salary:` + worker1.showSalary());
+console.log("New experience: " + worker1.showSalaryWithExperience());
+worker1.setExp = 1.5;
+console.log("New experience: " + worker1.showSalaryWithExperience());
+console.log(worker2.fullName);
+console.log(`${worker2.fullName} salary:` + worker2.showSalary());
+console.log("New experience: " + worker2.showSalaryWithExperience());
+worker2.setExp = 1.5;
+console.log("New experience: " + worker2.showSalaryWithExperience());
+console.log(worker3.fullName);
+console.log(`${worker3.fullName} salary:` + worker3.showSalary());
+console.log("New experience: " + worker3.showSalaryWithExperience());
+worker3.setExp = 1.5;
+console.log("New experience: " + worker3.showSalaryWithExperience());
