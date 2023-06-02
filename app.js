@@ -86,8 +86,8 @@ class Student extends Person {
   }
 
   showFullName(midleName) {
-    super.showFullName();
-    console.log(`${this.name} ${this.surname} ${midleName}`);
+
+    return (`${this.name} ${this.surname} ${midleName}`);
   }
   showCourse(currentYear) {
     const studentCourse = currentYear - this.year;
