@@ -90,7 +90,7 @@ class Student extends Person {
     return (`${this.name} ${this.surname} ${midleName}`);
   }
   showCourse(currentYear) {
-    const studentCourse = currentYear - this.year;
+    const studentCourse = currentYear - this.year +1;
     if (studentCourse > 0 && studentCourse <= 6) {
       return studentCourse;
     } else {
